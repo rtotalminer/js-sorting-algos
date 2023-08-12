@@ -35,10 +35,42 @@ function singleBubbleSort(arr) {
   }
   return arr;
 }
+function swap(arr,xp, yp) {
+  var temp = arr[xp];
+  arr[xp] = arr[yp];
+  arr[yp] = temp;
+  }
+
+function singleSelectionSort(arr) {
+  let n = arr.length;
+  for (i = 0; i < n-1; i++)
+  {
+      // Find the minimum element in unsorted array
+      min_idx = i;
+      for (j = i+1; j < n; i++){
+      if (arr[j] < arr[min_idx]) {
+          min_idx = j;
+        }
+      }
+      // Swap the found minimum element with the first element
+      swap(arr,min_idx, i);
+      return arr;
+  }
+    
+
+  
+  
+
+}
 
 function bubbleSort() {
   rects = createRectangles();
   algo = "bubble";
+}
+
+function selectionSort() {
+  rects = createRectangles();
+  algo = "selection";
 }
 
 
@@ -52,7 +84,7 @@ function mainLoop() {
 
   let elapsed = getTime();
   
-  if (elapsed % 5 == 0) {
+  if (0 == 0) {
 
     // Draw Background
     ctx.fillStyle = "rgba(0,0,0)";
@@ -70,6 +102,9 @@ function mainLoop() {
         temp = structuredClone(arr);
         if (algo == "bubble") {
           rects = singleBubbleSort(rects);
+        }
+        if (algo == "selection") {
+          rects = singleSelectionSort(rects);
         }
       }
         
