@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Sorting Algos</title>
+</head>
+
+<body>
+
+  <canvas
+    class="canvas"
+    id="canvas"
+    width="900"
+    height="600"
+  >
+  </canvas>
+
+  <div class="buttons">
+    <button class="btn" onclick="bubbleSort()">Bubble Sort</button>    
+  </div>
+
+  <script src="./scripts/rectangle.js"></script>
+  <script src="./scripts/main.js"></script>
+
+  <style>
+    .canvas {
+      padding-top: 2em;
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .buttons {
+      text-align: center;
+      width: 50em;
+      margin: 0 auto;
+      padding-top: 1em;
+
+      .btn {
+        padding: .25em .5em .25em .5em;
+        margin: 10px;
+      }
+    }
+  </style>
+
+</body>
+
+</html>
