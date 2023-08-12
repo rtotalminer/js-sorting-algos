@@ -9,9 +9,15 @@ var sorted = false;
 var startTime = new Date();
 var algo = "none";
 
+var selectionIndex  = 0;
+
+// Bubble Sort
+var bubbleButtonFlag = false;
+
+
 function createRectangles() {
   var rects = [];
-  for (let i=0; i<(canvas.width/10)-1; i++) {
+  for (let i=0; i<(canvas.width/10)-1; i++) {//
     let rectHeight = Math.floor(Math.random() * canvas.height-1);
     let rect = new Rectangle(5, rectHeight, "#FFFFFF")
     rects.push(rect);
@@ -19,11 +25,7 @@ function createRectangles() {
   return rects;
 }
 
-function getTime() {
-  return parseInt((new Date() - startTime) / 10);
-}
-
-function singleBubbleSort(arr) {
+function bubbleSort(arr) {
   for (let j=0; j<arr.length-1; j++) {
     arr[j].color = "#FFFFFF";
     if (arr[j].height > arr[j+1].height) {
@@ -35,41 +37,16 @@ function singleBubbleSort(arr) {
   }
   return arr;
 }
-function swap(arr,xp, yp) {
-  var temp = arr[xp];
-  arr[xp] = arr[yp];
-  arr[yp] = temp;
-  }
-
-function singleSelectionSort(arr) {
-  let n = arr.length;
-  for (i = 0; i < n-1; i++)
-  {
-      // Find the minimum element in unsorted array
-      min_idx = i;
-      for (j = i+1; j < n; i++){
-      if (arr[j] < arr[min_idx]) {
-          min_idx = j;
-        }
-      }
-      // Swap the found minimum element with the first element
-      swap(arr,min_idx, i);
-      return arr;
-  }
-    
-
-  
   
 
-}
-
-function bubbleSort() {
+function setBubble() {
   rects = createRectangles();
   algo = "bubble";
 }
 
-function selectionSort() {
+function setSelection() {
   rects = createRectangles();
+  selectionIndex = 0;
   algo = "selection";
 }
 
@@ -82,7 +59,7 @@ window.onload = function () {
 
 function mainLoop() {
 
-  let elapsed = getTime();
+  let elapsed = getTime(10);
   
   if (0 == 0) {
 
@@ -97,16 +74,37 @@ function mainLoop() {
         arr.push(rects[i].height);
       }
 
-      // Compare the arrays
-      if (!(JSON.stringify(temp) == JSON.stringify(arr))) {
-        temp = structuredClone(arr);
+      console.log(rects);
+
+      if (!isSorted(arr)) {
         if (algo == "bubble") {
-          rects = singleBubbleSort(rects);
+          rects = bubbleSort(rects);
         }
         if (algo == "selection") {
-          rects = singleSelectionSort(rects);
+          rects = selectionSort(rects);
         }
       }
+      else {
+        if (algo == "selection") {
+          
+        }
+      }
+
+      
+
+      // Compare the arrays
+      // if (!(JSON.stringify(temp) == JSON.stringify(arr))) {
+      //   temp = structuredClone(arr);
+      //   if (algo == "bubble") {
+      //     rects = bubbleSort(rects);
+      //   }
+        
+      // }
+
+      // if (algo == "selection") {
+      //   console.log(temp, arr);
+      //   rects = selectionSort(rects);
+      // }
         
       // Draw Rectangles
       for (let i=0; i<rects.length; i++) {
