@@ -72,10 +72,10 @@ function mainLoop() {
           rects = singleBubbleSort(rects);
         }
       }
-
+        
       // Draw Rectangles
       for (let i=0; i<rects.length; i++) {
-        rects[i].draw(5*i, canvas.height-rects[i].height);
+        rects[i].draw(5 + 10*i, canvas.height-rects[i].height);
       }
     }
   }
