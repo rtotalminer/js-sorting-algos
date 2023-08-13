@@ -1,0 +1,1 @@
+- Correctly colour non sorted items red.

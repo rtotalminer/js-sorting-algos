@@ -1,15 +1,29 @@
 
-function selectionSort(arr) {
+function selectionSort(rects) {
     let min_idx = selectionIndex;
-    let n = arr.length;
+    let n = rects.length;
+
+    if (selectionIndex > n-1) {
+        return rects;
+    }
+
+    // for (let k=selectionIndex; k<n; k++) {
+    //     rects[k].color = "#FF0000";
+    // }
 
     for (let j = selectionIndex+1; j < n; j++){
-        if (arr[j].height < arr[min_idx].height) {
+        rects[j].color = "#FF0000";
+        if (rects[min_idx].height > rects[j].height ) {
             min_idx = j;
         }
     }
-    console.log(arr, min_idx, selectionIndex)
-    swap(arr, min_idx, selectionIndex);
+
+    let temp = rects[min_idx].height;
+    rects[min_idx].height = rects[selectionIndex].height;
+    rects[selectionIndex].height = temp; 
+
+    rects[selectionIndex].color = "#FFFFFF";
+
     selectionIndex++;
-    return arr;
+    return rects;
 }  
